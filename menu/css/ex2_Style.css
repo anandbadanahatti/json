@@ -1,0 +1,8 @@
+ul ,li{
+	list-style-type: none;
+	display: inline-block;
+}
+#menu li{
+	border-right: 1px solid #ddd;
+	margin:0 5px;
+}

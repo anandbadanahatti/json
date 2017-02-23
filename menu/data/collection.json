@@ -1,0 +1,18 @@
+[	
+	{
+		"img_src" : "images/1.png",
+		"caption" : "Autumn Season"
+	},{
+		"img_src" : "images/2.png",
+		"caption" : "Winter Season"
+	},{
+		"img_src" : "images/3.png",
+		"caption" : "Summmer Season"
+	},{
+		"img_src" : "images/4.png",
+		"caption" : "Rainy Season"
+	},{
+		"img_src" : "images/5.png",
+		"caption" : "Spring Season"
+	}
+]

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<table id="table1">
+		<tbody>
+			<td id="Name"></td>
+			<td id="Country"></td>
+		</tbody>
+	</table>
+	<ul id="load_content"> </ul>
+	<ul id="menu_content"></ul>
+	<script type="text/javascript" src="js/integrated.js"></script>
+<!-- <script type="text/javascript">
+	
+		var data_file = "jsonData.json";
+		var http_request = new XMLHttpRequest();
+		http_request.onreadystatechange	= function(){
+			if (http_request.readyState == 4){
+				// Javascript function JSON.parse to parse JSON data
+				var jsonObj = JSON.parse(http_request.responseText);
+				// jsonObj variable now contains the data structure and can
+				// be accessed as jsonObj.name and jsonObj.country.
+				document.getElementById("Name").innerHTML =	jsonObj.name;
+				document.getElementById("Country").innerHTML = jsonObj.country;
+				}
+			}
+			http_request.open("GET", data_file, true);
+			http_request.send();
+	
+</script> -->
+<!-- <script type="text/javascript">
+$(function (){
+	var data_file1 = "test.json";
+
+	var showData = $('#load_content');
+	$.ajax({
+	// $.getJSON({
+	  url:data_file1,
+	  success: function(response) {
+		  //$( this ).addClass( "done" );
+		  console.log(data_file1);
+		  showData.append('<li>' + response.id + '</li><li>' + response.name + '</li>');
+	  }
+	});
+});	
+</script> -->
+<script type="text/javascript">
+	var showData = $('#load_content');
+	$.ajax({
+	    type: "GET",
+	    url: "test.json",
+	    contentType: "application/json",
+	    dataType: "json",
+	    data: {},
+	    success: function (response) {
+	        // alert(response.id);
+	        // showData.append('<li>' + response.id + '</li><li>' + response.name + '</li>');
+
+	    }       
+});
+</script>
+<script type="text/javascript">
+	var showData1 = $('#menu_content');
+	$.ajax({
+	    type: "GET",
+	    url: "menu.json",
+	    contentType: "application/json",
+	    dataType: "json",
+	    data: {},
+	    success: function (response) {
+	         
+	         //$.each(response, function(i){
+	         	// alert(response[i].name);
+	         	// alert(response[i].sub.length);
+createMenu(response);
+	         //});
+	        // showData.append('<li>' + response.id + '</li><li>' + response.name + '</li>');
+	        
+	    }       
+});
+
+	var createMenu = function(jsonDatas){
+		$.each(jsonDatas, function(i){
+			//li list
+			// alert(i + " -- " + jsonDatas[i].name);
+			showData.append('<li>' + jsonDatas[i].name + '</li>');
+			//sub li list
+			if(jsonDatas[i].sub.length > 0) {
+				// showData.append('<ul>');
+				var subList = $("<ul>");
+				$.each(jsonDatas[i].sub, function(j){
+					subList.append(createMenu(jsonDatas[j].sub));
+				})
+				alert(subList);
+				showData.append(subList);
+
+
+				
+
+			}
+
+
+		})
+		console.log(showData);
+
+		
+
+	}
+</script>
+
+</body>
+</html>
